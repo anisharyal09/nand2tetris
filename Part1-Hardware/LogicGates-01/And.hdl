@@ -1,1 +1,12 @@
+/* AND Gate using NAND Gate, 
+ * output = 1 iff a = b = 1
+*/
 
+Chip And{
+  IN a, b;
+  OUT out;
+
+  PARTS;
+  Nand(a=a, b=b, out = aNandb);   // aNandb = ~(a . b)
+  Nand(a=aNandb, b = aNandb, out = out);   //out = ~(~(a . b)) = a . b
+}
